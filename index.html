@@ -6,38 +6,74 @@
   <title>IA Ymer Hermo | Financial Analyst Portfolio</title>
   <style>
     :root {
-      --bg: #0b0f19;
-      --card-bg: rgba(23, 32, 51, 0.75);
+      --bg: #070a13;
+      --card-bg: rgba(15, 23, 42, 0.7);
       --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.15);
+      --accent-glow: rgba(56, 189, 248, 0.25);
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --border: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 60%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 50% 90%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
-      background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
       padding: 3rem 1rem;
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
-    .container { max-width: 900px; margin: 0 auto; }
+
+    /* Interactive Grid Pattern Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    /* Animated Ambient Light Spheres */
+    body::after {
+      content: "";
+      position: fixed;
+      top: -10%; left: -10%; width: 120vw; height: 120vh;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 40%, rgba(14, 165, 233, 0.12) 0%, transparent 50%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: -1;
+      animation: floatBg 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatBg {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.08) translate(-15px, 20px); }
+      100% { transform: scale(1) translate(15px, -10px); }
+    }
+
+    .container { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
     header {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 2.5rem 2rem;
       margin-bottom: 2.5rem;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
     }
+
     h1 { font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
     .subtitle { font-size: 1.1rem; color: var(--accent); font-weight: 600; margin-bottom: 1.25rem; }
     .meta-info { display: flex; flex-wrap: wrap; gap: 1rem; color: var(--text-muted); font-size: 0.95rem; }
@@ -45,59 +81,72 @@
     .meta-info a:hover { text-decoration: underline; }
     .badge {
       display: inline-block;
-      background: rgba(56, 189, 248, 0.1);
+      background: rgba(56, 189, 248, 0.12);
       color: var(--accent);
       border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 0.2rem 0.6rem;
+      padding: 0.2.rem 0.6rem;
       border-radius: 6px;
       font-size: 0.85rem;
       font-weight: 500;
     }
+
     section { margin-bottom: 2.5rem; }
     h2 { font-size: 1.4rem; color: #fff; border-left: 4px solid var(--accent); padding-left: 0.75rem; margin-bottom: 1.25rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border);
       padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
     }
+
     .card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(56, 189, 248, 0.3);
-      box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.3), 0 0 15px var(--accent-glow);
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
     }
+
     .card h3 { font-size: 1rem; color: var(--accent); margin-bottom: 0.75rem; }
     .card ul { list-style: none; }
     .card li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+
     .timeline-item {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 1.75rem;
       margin-bottom: 1.25rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
     }
+
     .timeline-item:hover {
-      transform: translateY(-2px);
-      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
     }
+
     .job-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
-    .company-container { display: flex; align-items: center; gap: 0.75rem; }
+    .company-container { display: flex; align-items: center; gap: 0.85rem; }
+    
     .company-logo {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 8px;
       object-fit: contain;
       background: #ffffff;
       padding: 4px;
       border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
+
     .company { font-weight: 700; color: #fff; font-size: 1.15rem; }
     .date { color: var(--accent); font-size: 0.9rem; font-weight: 500; }
     .role { color: var(--text-muted); font-size: 0.95rem; font-style: italic; margin-bottom: 1rem; }
@@ -222,7 +271,7 @@
       <div class="card">
         <div class="job-header">
           <div class="company-container">
-            <img class="company-logo" src="https://www.google.com/s2/favicons?domain=feu.edu.ph&sz=128" alt="Far Eastern University Logo">
+            <img class="company-logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Far_Eastern_University_seal.svg/200px-Far_Eastern_University_seal.svg.png" alt="Far Eastern University Logo">
             <span class="company">Far Eastern University</span>
           </div>
           <span class="date">June 2012 – May 2016</span>
